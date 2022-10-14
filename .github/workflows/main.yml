@@ -2,9 +2,7 @@ name: CSV Combination
 on: [push]
 jobs:
   build:
-    strategy:
-      matrix:
-        python-version: [3.6, 3.7, 3.8]
+    runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@2b446a728d9b1ebcd8aa086d58764770476123ea
       - name: Set up Python all python version
