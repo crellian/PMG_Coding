@@ -1,7 +1,6 @@
 import csv
 import sys
 import os.path as path
-import numpy as np
 import copy
 
 class Csv_Combiner():
