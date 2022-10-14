@@ -1,0 +1,16 @@
+name: CSV Combination
+on: [push]
+jobs:
+  build:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+    steps:
+      - uses: actions/checkout@2b446a728d9b1ebcd8aa086d58764770476123ea
+      - name: Set up Python all python version
+        uses: actions/setup-python@2b446a728d9b1ebcd8aa086d58764770476123ea
+        with:
+          python-version: ${{ matrix.python-version }}
+     - name: Run Test
+       run: python -m unittest tests
