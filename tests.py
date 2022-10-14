@@ -2,6 +2,7 @@ import sys
 import io
 import contextlib
 import csv
+import filecmp
 try:
     import unittest2 as unittest
 except ImportError:
@@ -26,14 +27,15 @@ class TestCombiner(unittest.TestCase):
             self.combiner.combine_files(paths)
             
     def test_combination(self):  # successful combination
-        paths = ["./fixtures/household_cleaners.csv", "./fixtures/accessories.csv", "./fixtures/clothing.csv"]
-        file_path = "./combined.csv"
-        with contextlib.redirect_stdout(io.StringIO()) as f:
+        with open('output.csv', 'w', newline='') as csvfile:
+            self.combiner = Csv_Combiner(
+                csv.writer(csvfile, lineterminator = "\n", doublequote=False, escapechar='\\', quoting=csv.QUOTE_ALL)
+                )
+            paths = ["./fixtures/household_cleaners.csv", "./fixtures/accessories.csv", "./fixtures/clothing.csv"]
+        
             self.combiner.combine_files(paths)
-            with open(file_path, 'r', newline='', encoding='utf-8') as csvfile:
-                reader = csv.reader(csvfile, doublequote=False, escapechar='\\', quoting=csv.QUOTE_ALL)
-                for row in reader:
-                    self.assertTrue(row in f.getvalue)
+        self.assertTrue(filecmp.cmp("combined.csv", "output.csv", shallow=False))
+
 
 if __name__ == '__main__':
     unittest.main()
