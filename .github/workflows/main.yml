@@ -2,7 +2,7 @@ name: CSV Combination
 on: [push]
 jobs:
   build:
-    runs-on: [ubuntu-latest]
+    runs-on: [windows-2022]
     
     strategy:
       matrix:
