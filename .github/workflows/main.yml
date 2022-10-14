@@ -1,6 +1,7 @@
 name: CSV Combination
 on: [push]
 jobs:
+  build:
     strategy:
       matrix:
         python-version: [3.6, 3.7, 3.8]
