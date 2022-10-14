@@ -6,7 +6,7 @@
     ├── fixtures            # test case 1
     ├── fixtures_corrupted  # test case 2
     ├── combined.csv        # ground truth
-    ├── generatefixtures.py # randomly test case generation
+    ├── generatefixtures.py # random test case generation
     ├── csv_combiner.py     # main program
     ├── tests.py            # testbench
     └── ...
