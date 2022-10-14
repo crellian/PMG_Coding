@@ -1,6 +1,6 @@
 # Coding Assessment
 
-### file structure
+### File structure
     .
     ├── ...
     ├── fixtures            # test case 1
